@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="{% static 'DigitalPlatform/style.css' %}">
+
+        <title>Digital Consulting - Group XX</title>
+    </head>
+
+    <body>
+        <header>
+            <!-- Tudo o que esta neste pagina aparece em todas as paginas. Dentro do header fica o comum para todos tbm -->
+        </header>
+
+        <!-- Esta parte sera substituida em cada pagina pelo conteudo pretendido -->
+        <section>
+            {% block content %}{% endblock content %}
+        </section>
+    </body>
+</html>
