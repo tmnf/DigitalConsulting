@@ -17,9 +17,14 @@ def index(request):
 # WebService Views
 
 @api_view(['GET', 'POST'])
-def solution_rest_api(request, problem, num_variables=0):
+def solution_rest_api(request, problem, num_variables, final):
     framework_executable = 'DigitalPlatform/integration/framework.jar'
-    framework_output = 'ADS-Solutions-And-Results/ADS/data/ADS/Kursawe/VAR0.tsv'
+    framework_output = 'ADS-Solutions-And-Results/ADS/data/ADS/Kursawe/FUN0.tsv'
+    keyword = 'qualities'
+
+    if final == "true":
+        framework_output = 'ADS-Solutions-And-Results/ADS/data/ADS/Kursawe/VAR0.tsv'
+        keyword = 'solutions'
 
     # Para testar o get usar os links:
     #       * http://127.0.0.1:8000/solutions/TesteTiago/?format=api (Em formato pesquisavel)
@@ -39,7 +44,7 @@ def solution_rest_api(request, problem, num_variables=0):
 
         final_response = {'problem': problem,
                           'number_of_solutions': len(solutions),
-                          'solutions': serializer.data}
+                          keyword: serializer.data}
 
         return Response(final_response)
     else:
