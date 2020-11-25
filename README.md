@@ -3,7 +3,7 @@ A platform to help clients optimize their productions.
 
 Authors
 -------
-- Tiago Farinha
+- Tiago Farinha 82358
 - Lúis Novo
 - Lucas Machado
 - Francisco Veiga
