@@ -31,10 +31,9 @@ Installation Guide:
     4) Run setup_project.bat
     
  * Docker
-   With Docker installed run:
      1) create_or_run_dockerfile.bat
   
  * Docker Image
      1) Download tar image from https://drive.google.com/file/d/1N6wcBpUdRlBVO8r65vI8MsEszSmVM3U5/view?usp=sharing
-     2) Run command "docker load -i <path to image downloaded>"
-      3) Run command "docker run digitalconsulting_web"
+     2) Run command "docker load -i (path to image downloaded)"
+     3) Run command "docker run digitalconsulting_web"
