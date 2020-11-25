@@ -26,15 +26,15 @@ Installation Guide:
 -------------------
 
 * Local Machine:
-    1) Install Java 14
-    2) Install Python 3.8
-    3) Install Pip
-    4) Run setup_project.bat
+    a) Install Java 14
+    b) Install Python 3.8
+    c) Install Pip
+    d) Run setup_project.bat
     
  * Docker
-     1) create_or_run_dockerfile.bat
+     a) create_or_run_dockerfile.bat
   
  * Docker Image
-     1) Download tar image from https://drive.google.com/file/d/1N6wcBpUdRlBVO8r65vI8MsEszSmVM3U5/view?usp=sharing
-     2) Run command "docker load -i (path to image downloaded)"
-     3) Run command "docker run digitalconsulting_web"
+     a) Download tar image from https://drive.google.com/file/d/1N6wcBpUdRlBVO8r65vI8MsEszSmVM3U5/view?usp=sharing
+     b) Run command "docker load -i (path to image downloaded)"
+     c) Run command "docker run digitalconsulting_web"
