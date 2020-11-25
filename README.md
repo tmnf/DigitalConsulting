@@ -20,6 +20,7 @@ Main Techonlogy Versions:
 * Pyfhel==2.2.4
 * pytz==2020.1
 * sqlparse==0.4.1
+* Java==14
 
 Installation Guide:
 -------------------
