@@ -1,0 +1,13 @@
+{% extends "default_page.html" %}
+{% load static %}
+
+{% block content %}
+    {% for quality in qualities %}
+        <h1>{{ quality.problem }}</h1>
+
+        {% for quality in quality.solutions_quality %}
+            <h2>{{ quality }}</h2>
+        {% endfor %}
+    {% endfor %}
+
+{% endblock content %}

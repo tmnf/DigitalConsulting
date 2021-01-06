@@ -7,10 +7,36 @@ from .webservice import serializers
 from .models import Solution
 from .integration import FrameworkIntegration
 
-import os
+from .entities import *
+
+problems = []
 
 
 def index(request):
+    if request.method == "POST":
+        name = request.POST.get('nome')
+        tipo = request.POST.get('tipo')
+        variables = request.POST.get('variables')
+        method = "jarfile"
+        # file = request.POST.get('file')
+        file = "evaluate.jar"
+
+        problems.append(Problem(name, tipo, variables, method, file))
+
+        context = {"problems": problems}
+
+        return render(request, 'index.html', context)
+    else:
+        return render(request, 'index.html')
+
+
+def show_results(request):
+    if request.method == 'POST':
+        qualities = [Quality("Teste 123", ["10 50", "13 20"])]  # Vai receber do metodo de integração
+
+        context = {'qualities': qualities}
+        return render(request, 'results.html', context)
+
     return render(request, 'index.html')
 
 
