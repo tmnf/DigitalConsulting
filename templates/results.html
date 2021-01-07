@@ -5,55 +5,65 @@
 
     <main>
         <div class="row">
-            <div class="col-2">
-                <table class="table table-hover">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>Problem</th>
-                    </tr>
-
-                    </thead>
-                    <tbody>
-                    {% for quality in qualities %}
+            <div class="col-7">
+                <div class="table-responsive">
+                    <table class="table table-hover ">
+                        <thead class="thead-dark">
                         <tr>
-                            <th>{{ quality.problem }}</th>
+                            <th>Problem</th>
+                            <th>Quality</th>
                         </tr>
-                    {% endfor %}
-                    </tbody>
 
+                        </thead>
+                        <tbody>
+                        {% for quality in qualities %}
+                            <tr>
+                                <th>
+                                    {{ quality.problem }}
+                                </th>
 
-                </table>
+                                {% for quality in quality.solutions_quality %}
+
+                                    <th>
+                                        {{ quality }}
+                                    </th>
+                                {% endfor %}
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
+
+        <br>
+
         <div class="row">
-            <div class="col-5">
-                <br>
+            <div class="col-2">
+
 
                 <form action="{% url 'show_purchase' %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-primary btn-lg">Buy</button>
+                </form>
+            </div>
+            <div class="col-2">
+                <form action="{% url 'index' %}" method="get">
+                    {% csrf_token %}
                     <button type="submit" class="btn btn-primary btn-lg">Cancel</button>
+                </form>
+            </div>
+            <div class="col-2">
+                <form action="{% url 'show_results' %}" method="post">
+                    {% csrf_token %}
                     <button type="submit" class="btn btn-primary btn-lg">Check again</button>
                 </form>
-
-                {% for quality in qualities %}
-                    <h1>{{ quality.problem }}</h1>
-
-                    {% for quality in quality.solutions_quality %}
-                        <h2>{{ quality }}</h2>
-                    {% endfor %}
-                {% endfor %}
             </div>
         </div>
 
-
     </main>
-    {% for quality in qualities %}
-        <h1>{{ quality.problem }}</h1>
 
-        {% for quality in quality.solutions_quality %}
-            <h2>{{ quality }}</h2>
-        {% endfor %}
-    {% endfor %}
 
 {% endblock content %}

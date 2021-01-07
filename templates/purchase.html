@@ -4,79 +4,30 @@
 {% block content %}
     <main>
         <div class="row">
-            <div class="col-8">
+            <div class="col-2">
                 <table class="table table-hover">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Método</th>
+                        <th>List Of Problems</th>
                     </tr>
+
                     </thead>
                     <tbody>
-                    {% for problem in problems %}
+                    {% for quality in qualities %}
                         <tr>
-                            <th>{{ forloop.counter }}</th>
-                            <td>{{ problem.nome }}</td>
-                            <td>{{ problem.tipo }}</td>
-                            <td>{{ problem.method }}</td>
+                            <th>{{ quality.problem }}</th>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
-                <br>
-
-                <form action="{% url 'show_results' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Gerar Soluções</button>
-                </form>
             </div>
-
-            <div class="col-4">
-                <div class="jumbotron">
-                    <form action="{% url 'index' %}" method="post">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" class="form-control" name="nome" placeholder="Problema">
-                        </div>
-                        <div class="form-group">
-                            <label for="tipo">Tipo</label>
-                            <select class="form-control" name="tipo">
-                                <option>Escolha uma opção</option>
-                                <option>Integer</option>
-                                <option>Boolean</option>
-                                <option>Double</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="variaveis">Váriaveis</label>
-                            <textarea class="form-control" id="variaveis" name="variables" rows="3"></textarea>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="webService" id="webService"
-                                   value="opcao1" checked>
-                            <label class="form-check-label" for="webService">
-                                Webservice
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="Jarfile" id="Jarfile" value="opcao2">
-                            <label class="form-check-label" for="Jarfile">
-                                Jarfile
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label for="upload_Arquivo">Upload</label>
-                            <input type="file" class="form-control-file" id="upload_Arquivo" name="file">
-                        </div>
-
-                        <button type="submit" onclick="addProblem()" class="btn btn-primary">Adicionar Problema</button>
-                        <button type="submit" class="btn btn-outline-danger">Cancelar</button>
-                    </form>
-                </div>
-            </div>
+        </div>
+    <br>
+        <div class="col-2">
+            <form action="{% url 'show_purchase' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-lg">Download Solutions</button>
+            </form>
         </div>
     </main>
 {% endblock content %}

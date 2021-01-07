@@ -33,7 +33,7 @@ def index(request):
 
 def show_results(request):
     if request.method == 'POST':
-        qualities = [Quality("Teste 123", ["10 50", "13 20"])]  # Vai receber do metodo de integração
+        qualities = [Quality("Teste 123", ["10 50", "13 20"]),Quality("Teste ", ["10", "13"])]  # Vai receber do metodo de integração
 
         context = {'qualities': qualities}
         return render(request, 'results.html', context)
@@ -41,9 +41,10 @@ def show_results(request):
     return render(request, 'index.html')
 
 
+
 def show_purchase(request):
     if request.method == 'POST':
-        qualities = [Quality("Teste 123", ["10 50", "13 20"])]  # Vai receber do metodo de integração
+        qualities = [Quality("Teste 123", ["10 50", "13 20"]),Quality("Teste 123", ["10 50", "13 20"])]  # Vai receber do metodo de integração
 
         context = {'qualities': qualities}
         return render(request, 'purchase.html', context)
