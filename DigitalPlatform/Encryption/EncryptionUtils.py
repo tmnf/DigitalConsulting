@@ -41,14 +41,14 @@ def decrypt_data(encrypted_solutions):
 
 
 # Teste
-#solutions = ["29 10 5", "10 15 6"]
-#e = encrypt_data(solutions)
+solutions = ["29 10 5", "10 15 6"]
+e = encrypt_data(solutions)
 
-#print(e)
+print(e)
 
-#for solution in e:
-#    solution[0] = solution[0] * 2
-#    solution[1] = solution[1] + 1
-#    solution[2] = solution[2] - 4
+for solution in e:
+    solution[0] = solution[0] * 2
+    solution[1] = solution[1] + 1
+    solution[2] = solution[0] * solution[1]
 
-#print(decrypt_data(e))
+print(decrypt_data(e))
