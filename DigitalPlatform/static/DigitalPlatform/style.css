@@ -65,11 +65,7 @@ main {
     height: 100%;
     position: fixed;
 }
-
-
-.table {
-    border-collapse: collapse;
-    margin: 25px;
-    border-radius: 12px 12px;
-
+.alerta .msg {
+    font-size: 10px;
+    color: #a30000;
 }

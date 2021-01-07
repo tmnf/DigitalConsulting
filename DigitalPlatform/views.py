@@ -20,8 +20,9 @@ def index(request):
         method = "jarfile"
         # file = request.POST.get('file')
         file = "evaluate.jar"
+        size = request.POST.get('size')
 
-        problems.append(Problem(name, tipo, variables, method, file))
+        problems.append(Problem(name, tipo, variables, method, file, size))
 
         context = {"problems": problems}
 
