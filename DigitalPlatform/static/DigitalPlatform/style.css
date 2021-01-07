@@ -49,7 +49,6 @@
 
 #main {
     padding-left: 70px;
-
 }
 
 @media (min-width: 768px) {
@@ -65,7 +64,15 @@ main {
     height: 100%;
     position: fixed;
 }
+
 .alerta .msg {
     font-size: 10px;
     color: #a30000;
+}
+
+#table-scroll {
+    height: 600px;
+    width: 300px;
+    overflow: auto;
+    margin-top: 20px;
 }

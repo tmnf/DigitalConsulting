@@ -8,26 +8,37 @@
                 <table class="table table-hover">
                     <thead class="thead-dark">
                     <tr>
-                        <th>List Of Problems</th>
+                        <th>Lista de Problemas</th>
+                        <th>Soluções</th>
                     </tr>
 
                     </thead>
                     <tbody>
-                    {% for quality in qualities %}
+                    {% for solution in solutions %}
                         <tr>
-                            <th>{{ quality.problem }}</th>
+                            <th>
+                                {{ solution.problem }}
+                            </th>
+
+                            {% for solution in solution.solutions %}
+
+                                <th>
+                                    {{ solution }}
+                                </th>
+                            {% endfor %}
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
-    <br>
+        <br>
         <div class="col-2">
-            <form action="{% url 'show_purchase' %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-primary btn-lg">Download Solutions</button>
-            </form>
+            {% for solution in solutions %}
+                <a href="../ADS-Solutions-And-Results/ADS/data/ADS/{{ solution.problem }}/VAR0.tsv" download>
+                    <button class="btn btn-primary btn-lg"> Descarregar</button>
+                </a>
+            {% endfor %}
         </div>
     </main>
 {% endblock content %}

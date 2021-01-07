@@ -15,14 +15,25 @@ problems = []
 def index(request):
     if request.method == "POST":
         name = request.POST.get('nome')
-        tipo = request.POST.get('tipo')
+        tipo = request.POST.get('type')
+
+        objectives = request.POST.get('objectives')
         variables = request.POST.get('variables')
-        method = "jarfile"
-        # file = request.POST.get('file')
+        variables_array = []
+
+        for line in variables.splitlines():
+            variable_data = line.split(" ")
+            variables_array.append(Variable(variable_data[0], variable_data[1], variable_data[2]))
+
+        method = request.POST.get('method')
         file = "evaluate.jar"
+
         size = request.POST.get('size')
 
-        problems.append(Problem(name, tipo, variables, method, file, size))
+        if not name or not tipo or not variables or not method or not file or not size or not objectives:
+            return render(request, 'index.html')
+
+        problems.append(Problem(name, tipo, variables_array, objectives, method, file, size))
 
         context = {"problems": problems}
 
@@ -33,7 +44,16 @@ def index(request):
 
 def show_results(request):
     if request.method == 'POST':
-        qualities = [Quality("Teste 123", ["10 50", "13 20"]),Quality("Teste ", ["10", "13"])]  # Vai receber do metodo de integração
+        FrameworkIntegration.run_algorithm('DigitalPlatform/integration/framework.jar', problems)
+        lines = FrameworkIntegration.read_output(
+            'ADS-Solutions-And-Results/ADS/data/ADS/' + problems[0].nome + '/FUN0.tsv')
+
+        qualities = []
+
+        # Alterar isto para aceitar varios problemas
+        q = Quality(problems[0].nome, lines)
+        # q.solutions_quality.sort(custom_sort)
+        qualities.append(q)
 
         context = {'qualities': qualities}
         return render(request, 'results.html', context)
@@ -41,12 +61,43 @@ def show_results(request):
     return render(request, 'index.html')
 
 
+def custom_sort(line1, line2):
+    m1 = 0
+    for value in line1.split():
+        m1 += float(value)
+
+    m1 = m1 / (len(line1.split()))
+
+    m2 = 0
+    for value in line2.split():
+        m2 += float(value)
+
+    m2 = m2 / (len(line2.split()))
+
+    offset = 1
+    if problems[0].better == "Menor":
+        offset = -1
+
+    if m1 > m2:
+        return 1 * offset
+    elif m1 == m2:
+        return 0
+    else:
+        return -1 * offset
+
 
 def show_purchase(request):
     if request.method == 'POST':
-        qualities = [Quality("Teste 123", ["10 50", "13 20"]),Quality("Teste 123", ["10 50", "13 20"])]  # Vai receber do metodo de integração
+        lines = FrameworkIntegration.read_output(
+            'ADS-Solutions-And-Results/ADS/data/ADS/' + problems[0].nome + '/VAR0.tsv')
 
-        context = {'qualities': qualities}
+        solutions = []
+
+        s = Solution(problems[0].nome, lines)
+        # s.solutions.sort(custom_sort)
+        solutions.append(s)
+
+        context = {'solutions': solutions}
         return render(request, 'purchase.html', context)
 
     return render(request, 'results.html')

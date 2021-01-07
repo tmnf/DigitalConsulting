@@ -14,11 +14,6 @@
 </head>
 
 <body>
-<header>
-    <!-- Tudo o que esta neste pagina aparece em todas as paginas. Dentro do header fica o comum para todos tbm -->
-</header>
-
-<!-- Esta parte sera substituida em cada pagina pelo conteudo pretendido -->
 <section>
     <div class="">
         <div id="sidebar-wrapper" class="sidebar-toggle">
@@ -28,16 +23,10 @@
                                      src="{% static 'DigitalPlatform/images/logo.png' %}"/></a>
                 </div>
                 <li>
-                    <a href="#item1">Página Inicial</a>
+                    <a href="{% url 'index' %}">Página Inicial</a>
                 </li>
                 <li>
-                    <a href="#item2">Soluções Geradas</a>
-                </li>
-                <li>
-                    <a href="#item3">Exemplo</a>
-                </li>
-                <li>
-                    <a href="#item3">Sair</a>
+                    <a href="{% url 'index' %}">Sair</a>
                 </li>
             </ul>
         </div>
