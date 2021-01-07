@@ -2,22 +2,48 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
 
-        <link rel="stylesheet" href="{% static 'DigitalPlatform/style.css' %}">
+    <link rel="stylesheet" href="{% static 'DigitalPlatform/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3..4.1.js"></script>
 
-        <title>Digital Consulting - Group XX</title>
-    </head>
+    <title>Digital Consulting - Group XX</title>
+</head>
 
-    <body>
-        <header>
-            <!-- Tudo o que esta neste pagina aparece em todas as paginas. Dentro do header fica o comum para todos tbm -->
-        </header>
+<body>
+<header>
+    <!-- Tudo o que esta neste pagina aparece em todas as paginas. Dentro do header fica o comum para todos tbm -->
+</header>
 
-        <!-- Esta parte sera substituida em cada pagina pelo conteudo pretendido -->
-        <section>
-            {% block content %}{% endblock content %}
-        </section>
-    </body>
+<!-- Esta parte sera substituida em cada pagina pelo conteudo pretendido -->
+<section>
+    <div class="">
+        <div id="sidebar-wrapper" class="sidebar-toggle">
+            <ul class="sidebar-nav">
+                <div class="row justify-content-center" id="logo">
+                    <a href="#"><img width="180px" height="180"
+                                     src="{% static 'DigitalPlatform/images/logo.png' %}"/></a>
+                </div>
+                <li>
+                    <a href="#item1">Página Inicial</a>
+                </li>
+                <li>
+                    <a href="#item2">Soluções Geradas</a>
+                </li>
+                <li>
+                    <a href="#item3">Exemplo</a>
+                </li>
+                <li>
+                    <a href="#item3">Sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {% block content %}{% endblock content %}
+</section>
+</body>
 </html>

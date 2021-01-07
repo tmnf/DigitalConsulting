@@ -1,0 +1,69 @@
+{% extends "default_page.html" %}
+{% load static %}
+
+{% block content %}
+
+    <main>
+        <div class="row">
+            <div class="col-7">
+                <div class="table-responsive">
+                    <table class="table table-hover ">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Problem</th>
+                            <th>Quality</th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        {% for quality in qualities %}
+                            <tr>
+                                <th>
+                                    {{ quality.problem }}
+                                </th>
+
+                                {% for quality in quality.solutions_quality %}
+
+                                    <th>
+                                        {{ quality }}
+                                    </th>
+                                {% endfor %}
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-2">
+
+
+                <form action="{% url 'show_purchase' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary btn-lg">Buy</button>
+                </form>
+            </div>
+            <div class="col-2">
+                <form action="{% url 'index' %}" method="get">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary btn-lg">Cancel</button>
+                </form>
+            </div>
+            <div class="col-2">
+                <form action="{% url 'show_results' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary btn-lg">Check again</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+
+{% endblock content %}
